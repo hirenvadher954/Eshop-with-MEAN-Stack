@@ -1,0 +1,51 @@
+.admin {
+  &-wrapper {
+
+  }
+
+  &-main {
+    //width: calc(100% - 175px);
+    margin-left: 175px;
+  }
+
+  &-sidebar {
+    position: fixed;
+    background-color: #0a1d31;
+    width: 175px;
+    height: 100%;
+    top: 0;
+
+    .logo {
+      padding: 10px;
+
+      img {
+        height: 150px;
+      }
+    }
+
+    .links {
+      ul {
+        li {
+          a {
+            color: var(--surface-a);
+            padding: 10px 15px;
+            display: block;
+
+            &:hover {
+              background-color: var(--blue-700);
+            }
+          }
+
+          i {
+            margin-right: 8px;
+            float: left;
+          }
+
+          &.logout {
+            background-color: var(--blue-500);
+          }
+        }
+      }
+    }
+  }
+}

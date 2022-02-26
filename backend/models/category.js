@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
-const categorySchema = new mongoose.Schema({
+const categorySchema = mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
     },
     icon: {
-        type: String
+        type: String,
     },
-    color: {
-        type: String
+    color: { 
+        type: String,
     }
 })
 
@@ -22,4 +22,4 @@ categorySchema.set('toJSON', {
     virtuals: true,
 });
 
-module.exports.Category = mongoose.model('Category', categorySchema);
+exports.Category = mongoose.model('Category', categorySchema);

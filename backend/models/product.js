@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const productSchema = new mongoose.Schema({
+const productSchema = mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -24,14 +24,14 @@ const productSchema = new mongoose.Schema({
         type: String,
         default: ''
     },
-    price: {
+    price : {
         type: Number,
-        default: 0
+        default:0
     },
     category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category',
-        required: true
+        required:true
     },
     countInStock: {
         type: Number,
@@ -65,4 +65,5 @@ productSchema.set('toJSON', {
     virtuals: true,
 });
 
-module.exports.Product = mongoose.model('Product', productSchema);
+
+exports.Product = mongoose.model('Product', productSchema);
