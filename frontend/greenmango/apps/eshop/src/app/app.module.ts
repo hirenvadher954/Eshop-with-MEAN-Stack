@@ -11,6 +11,7 @@ import { UiModule } from '@greenmango/ui';
 import { RouterModule, Routes } from '@angular/router';
 import { AccordionModule } from 'primeng/accordion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
     ProductListComponent,
     HeaderComponent,
     FooterComponent,
+    CategoriesFormComponent,
   ],
   imports: [
     BrowserModule,
