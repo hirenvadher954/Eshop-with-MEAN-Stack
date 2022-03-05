@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { CategoriesService, Category } from "@greenmango/products";
 import { Router } from "@angular/router";
 import { ConfirmationService, MessageService } from "primeng/api";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "admin-categories-list",
@@ -49,11 +50,11 @@ export class CategoriesListComponent implements OnInit {
     });
   }
 
-  updateCategory(categoryid: string) {
+  updateCategory(categoryid: string): void {
     this.router.navigateByUrl(`categories/form/${categoryid}`).then();
   }
 
-  private _getCategories() {
+  private _getCategories(): void {
     this.categoriesService.getCategories().subscribe((categories) => {
       this.categories = categories;
     });
