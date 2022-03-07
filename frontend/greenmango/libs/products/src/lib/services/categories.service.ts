@@ -29,7 +29,7 @@ export class CategoriesService {
     return this.http.put<Category>(`${this.apiURLCategories}/${category.id}`, category);
   }
 
-  deleteCategory(categoryId: string): Observable<any> {
-    return this.http.delete<any>(`${this.apiURLCategories}/${categoryId}`);
+  deleteCategory(categoryId: string) {
+    return this.http.delete(`${this.apiURLCategories}/${categoryId}`);
   }
 }

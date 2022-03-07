@@ -57,6 +57,8 @@ export class CategoriesListComponent implements OnInit {
   private _getCategories(): void {
     this.categoriesService.getCategories().subscribe((categories) => {
       this.categories = categories;
+      console.log(this.categories);
     });
+    
   }
 }

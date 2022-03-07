@@ -64,7 +64,7 @@ export class CategoriesFormComponent implements OnInit {
             summary: "Success",
             detail: `Category ${category.name} is created!`
           });
-          timer(2000).subscribe(() => this.location.back());
+          timer(1000).subscribe(() => this.location.back());
         }, error: () => {
           this.messageService.add({
             severity: "error",
@@ -104,7 +104,7 @@ export class CategoriesFormComponent implements OnInit {
       if (params["id"]) {
         this.editmode = true;
         this.currentCategoryId = params["id"];
-        this.categoriesService.getCategory(params["id"]).subscribe((category) => {
+        this.categoriesService.getCategory(this.currentCategoryId).subscribe((category) => {
           this.categoryForm["name"].setValue(category.name);
           this.categoryForm["icon"].setValue(category.icon);
           this.categoryForm["color"].setValue(category.color);

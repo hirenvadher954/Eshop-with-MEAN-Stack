@@ -22,6 +22,8 @@ import { ToastModule } from "primeng/toast";
 import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { ColorPickerModule } from "primeng/colorpicker";
 import { ConfirmationService, MessageService } from "primeng/api";
+import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
+import { ProductsListComponent } from './pages/products/products-list/products-list.component';
 
 const UX_MODULE = [
   CardModule,
@@ -55,7 +57,9 @@ const routes: Routes = [
     SidebarComponent,
     ShellComponent,
     CategoriesListComponent,
-    CategoriesFormComponent
+    CategoriesFormComponent,
+    ProductsFormComponent,
+    ProductsListComponent
   ],
   imports: [
     BrowserModule,
