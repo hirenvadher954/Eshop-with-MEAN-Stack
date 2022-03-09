@@ -1,28 +1,27 @@
-import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { Location } from "@angular/common";
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
 import {
   CategoriesService,
   Category,
   Product,
-  ProductsService,
-} from '@greenmango/products';
-import { MessageService } from 'primeng/api';
-import { timer } from 'rxjs';
+  ProductsService
+} from "@greenmango/products";
+import { MessageService } from "primeng/api";
 
 @Component({
-  selector: 'admin-products-form',
-  templateUrl: './products-form.component.html',
-  styles: [],
+  selector: "admin-products-form",
+  templateUrl: "./products-form.component.html",
+  styles: []
 })
 export class ProductsFormComponent implements OnInit {
   editmode = false;
   form: FormGroup;
   isSubmitted = false;
   catagories: Category[] = [];
-  imageDisplay: string | ArrayBuffer;
-  currentProductId: string;
+  imageDisplay: string | undefined = "";
+  currentProductId = "";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,7 +30,9 @@ export class ProductsFormComponent implements OnInit {
     private messageService: MessageService,
     private location: Location,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    this.form = this._initForm();
+  }
 
   ngOnInit(): void {
     this._initForm();
@@ -40,16 +41,16 @@ export class ProductsFormComponent implements OnInit {
   }
 
   private _initForm() {
-    this.form = this.formBuilder.group({
-      name: ['', Validators.required],
-      brand: ['', Validators.required],
-      price: ['', Validators.required],
-      category: ['', Validators.required],
-      countInStock: ['', Validators.required],
-      description: ['', Validators.required],
-      richDescription: [''],
-      image: ['', Validators.required],
-      isFeatured: [false],
+    return this.formBuilder.group({
+      name: ["", Validators.required],
+      brand: ["", Validators.required],
+      price: ["", Validators.required],
+      category: ["", Validators.required],
+      countInStock: ["", Validators.required],
+      description: ["", Validators.required],
+      richDescription: [""],
+      image: ["", Validators.required],
+      isFeatured: [false]
     });
   }
 
@@ -58,31 +59,33 @@ export class ProductsFormComponent implements OnInit {
       this.catagories = categories;
     });
   }
+
   private _checkEditMode() {
     this.route.params.subscribe((params) => {
-      if (params['id']) {
+      if (params["id"]) {
         this.editmode = true;
-        this.currentProductId = params['id'];
+        this.currentProductId = params["id"];
         this.productsService
-          .getProduct(params['id'])
+          .getProduct(params["id"])
           .subscribe((product: Product) => {
-            this.productForm['name'].setValue(product.name);
-            this.productForm['category'].setValue(product.category.id);
-            this.productForm['brand'].setValue(product.brand);
-            this.productForm['price'].setValue(product.price);
-            this.productForm['countInStock'].setValue(product.countInStock);
-            this.productForm['isFeatured'].setValue(product.isFeatured);
-            this.productForm['description'].setValue(product.description);
-            this.productForm['richDescription'].setValue(
+            this.productForm["name"].setValue(product.name);
+            this.productForm["category"].setValue(product.category?.id);
+            this.productForm["brand"].setValue(product.brand);
+            this.productForm["price"].setValue(product.price);
+            this.productForm["countInStock"].setValue(product.countInStock);
+            this.productForm["isFeatured"].setValue(product.isFeatured);
+            this.productForm["description"].setValue(product.description);
+            this.productForm["richDescription"].setValue(
               product.richDescription
             );
             this.imageDisplay = product.image;
-            this.productForm['image'].setValidators([]);
-            this.productForm['image'].updateValueAndValidity();
+            this.productForm["image"].setValidators([]);
+            this.productForm["image"].updateValueAndValidity();
           });
       }
     });
   }
+
   get productForm() {
     return this.form.controls;
   }
