@@ -11,6 +11,10 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { ShellComponent } from './shared/shell/shell.component';
 import { CategoriesListComponent } from './pages/categories/categories-list/categories-list.component';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
+import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
+import { ProductsListComponent } from './pages/products/products-list/products-list.component';
+import { UsersFormComponent } from './pages/users/users-form/users-form.component';
+import { UsersListComponent } from './pages/users/users-list/users-list.component';
 
 import { CategoriesService } from '@greenmango/products';
 import { CardModule } from 'primeng/card';
@@ -22,10 +26,11 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ColorPickerModule } from 'primeng/colorpicker';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
-import { ProductsListComponent } from './pages/products/products-list/products-list.component';
-import { UsersFormComponent } from './pages/users/users-form/users-form.component';
-import { UsersListComponent } from './pages/users/users-list/users-list.component';
+import { InputMaskModule } from "primeng/inputmask";
+import {InputNumberModule} from 'primeng/inputnumber';
+import {DropdownModule} from 'primeng/dropdown';
+import {EditorModule} from 'primeng/editor';
+
 
 const UX_MODULE = [
   CardModule,
@@ -36,6 +41,10 @@ const UX_MODULE = [
   ButtonModule,
   ConfirmDialogModule,
   ColorPickerModule,
+  InputMaskModule,
+  InputNumberModule,
+  DropdownModule,
+  EditorModule
 ];
 const routes: Routes = [
   {

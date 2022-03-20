@@ -1,7 +1,7 @@
-const { Product } = require('../models/product').Product;
+const { Product } = require('../models/product');
 const express = require('express');
 const mongoose = require("mongoose");
-const { Category } = require("../models/category").Category;
+const { Category } = require("../models/category");
 const router = express.Router();
 const multer = require('multer');
 
